@@ -24,6 +24,7 @@ jobs:
           api: 29
           arch: arm64
           install-location: toolchains
+          force: true 
       - shell: bash
         run: make
       - name: Upload a Build Artifact
