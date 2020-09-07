@@ -2,10 +2,10 @@ language: android
 sudo: true
 android:
   components:
+    - android
     - tools
     - platform-tools
-    - extra-google-m2repository
-    - extra-android-m2repository
+    - build-tools    
 addons:
   artifacts:
     paths:
@@ -13,7 +13,9 @@ addons:
 
 before_install:
 install:
-  - echo y | sdkmanager "ndk;21.2.6472646"
+before_install:
+  # - echo y | sdkmanager "ndk"
+  - echo y | sdkmanager "ndk-bundle"
   - echo y | sdkmanager "cmake;3.10.2.4988404"
   - sdkmanager --update
 before_script:
