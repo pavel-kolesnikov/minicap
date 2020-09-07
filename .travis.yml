@@ -1,24 +1,20 @@
 language: android
-sudo: true
 android:
   components:
-    - android
-    - tools
-    - platform-tools
-    - build-tools    
+    - build-tools-26.0.2
+    - android-26
+    - ndk-bundle
+    - cmake-3.10.2.4988404
+  licenses:
+    - 'android-sdk-preview-license-.+'
+    - 'android-sdk-license-.+'
+    - 'google-gdk-license-.+'    
 addons:
   artifacts:
     paths:
       - $(git ls-files -o | grep libs | tr "\n" ":")
-
-before_install:
-install:
-before_install:
-  # - echo y | sdkmanager "ndk"
-  - echo y | sdkmanager "ndk-bundle"
-  - echo y | sdkmanager "cmake;3.10.2.4988404"
-  - sdkmanager --update
-before_script:
-
+cache:
+  directories:
+    - $HOME/.android/build-cache
 script:
   - make
